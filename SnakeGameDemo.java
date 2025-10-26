@@ -20,11 +20,14 @@ public class SnakeGameDemo {
             while (System.currentTimeMillis() - start < 300 && !game.isGameOver()) {
                 try {
                     if (System.in.available() > 0) {
-                        char input = Character.toUpperCase(scanner.nextLine().charAt(0));
-                        if (input == 'W') game.setDirection("UP");
-                        else if (input == 'S') game.setDirection("DOWN");
-                        else if (input == 'A') game.setDirection("LEFT");
-                        else if (input == 'D') game.setDirection("RIGHT");
+                        String line = scanner.nextLine().trim();
+                        if (!line.isEmpty()) {
+                            char input = Character.toUpperCase(line.charAt(0));
+                            if (input == 'W') game.setDirection("UP");
+                            else if (input == 'S') game.setDirection("DOWN");
+                            else if (input == 'A') game.setDirection("LEFT");
+                            else if (input == 'D') game.setDirection("RIGHT");
+                        }
                     }
                 } catch (IOException e) {
                 }
@@ -39,4 +42,5 @@ public class SnakeGameDemo {
         System.out.println("Game Over! Final Score: " + game.getScore());
         scanner.close();
     }
+
 }
